@@ -1,0 +1,49 @@
+/* stylelint-disable -- Tailwind config must have such imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable */
+
+@layer base {
+  :root {
+    --tg-theme-bg-color: #fff;
+    --tg-theme-text-color: #000;
+    --tg-theme-hint-color: #707579;
+    --tg-theme-link-color: #3390ec;
+    --tg-theme-button-color: #3390ec;
+    --tg-theme-button-text-color: #fff;
+    --tg-theme-secondary-bg-color: #f4f4f5;
+    --tg-theme-header-bg-color: #fff;
+    --tg-theme-accent-text-color: #3390ec;
+    --tg-theme-section-bg-color: #fff;
+    --tg-theme-section-header-text-color: #707579;
+    --tg-theme-subtitle-text-color: #707579;
+    --tg-theme-destructive-text-color: #e53935;
+    --stroke-separator: #00000013;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --tg-theme-bg-color: #212121;
+      --tg-theme-text-color: #fff;
+      --tg-theme-hint-color: #aaa;
+      --tg-theme-link-color: #8774e1;
+      --tg-theme-button-color: #8774e1;
+      --tg-theme-button-text-color: #fff;
+      --tg-theme-secondary-bg-color: #0f0f0f;
+      --tg-theme-header-bg-color: #212121;
+      --tg-theme-accent-text-color: #8774e1;
+      --tg-theme-section-bg-color: #212121;
+      --tg-theme-section-header-text-color: #aaa;
+      --tg-theme-subtitle-text-color: #aaa;
+      --tg-theme-destructive-text-color: #e53935;
+      --stroke-separator: #fff1;
+    }
+  }
+}
+
+@layer components {
+  .icon {
+    @apply box-content inline-block select-none fill-current text-inherit;
+  }
+}
