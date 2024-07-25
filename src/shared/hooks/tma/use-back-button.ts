@@ -3,34 +3,35 @@ import { useEffect } from 'react';
 import { useTelegram } from '~/shared/hooks/tma/use-telegram.ts';
 
 type TUseBackButton = {
-  hideOnClick?: boolean;
-  onClick?: () => void;
-  show?: boolean;
+  isHideOnClick?: boolean;
+  isShow?: boolean;
+  onClick?: () => Promise<void> | void;
 };
 
 export const useBackButton = ({
   onClick,
-  show,
-  hideOnClick,
+  isShow,
+  isHideOnClick,
 }: TUseBackButton = {}) => {
   const tg = useTelegram();
 
   useEffect(() => {
-    if (typeof show !== 'boolean') return;
+    if (typeof isShow !== 'boolean') return;
 
-    if (show) {
+    if (isShow) {
       tg.BackButton.show();
     } else {
       tg.BackButton.hide();
     }
-  }, [show, tg.BackButton]);
+  }, [isShow, tg.BackButton]);
 
   useEffect(() => {
-    const handleClick = () => {
-      onClick?.();
-      tg.HapticFeedback.selectionChanged();
+    const handleClick = async () => {
+      await onClick?.();
 
-      if (hideOnClick) {
+      tg.HapticFeedback.impactOccurred('light');
+
+      if (isHideOnClick) {
         tg.BackButton.hide();
       }
     };
@@ -40,7 +41,7 @@ export const useBackButton = ({
     return () => {
       tg.BackButton.offClick(handleClick);
     };
-  }, [hideOnClick, onClick, tg.BackButton, tg.HapticFeedback]);
+  }, [isHideOnClick, onClick, tg.BackButton, tg.HapticFeedback]);
 
   return tg.BackButton;
 };
