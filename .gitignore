@@ -31,3 +31,5 @@ build
 
 .eslintcache
 .stylelintcache
+
+.yarn
