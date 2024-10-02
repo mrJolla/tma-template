@@ -10,8 +10,8 @@ import {
   SHORT_CACHE_TIMING,
 } from '~/shared/constants/react-query-timings.ts';
 
-import '~/shared/assets/styles/app.css';
 import '@telegram-apps/telegram-ui/dist/styles.css';
+import '~/shared/assets/styles/app.css';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
